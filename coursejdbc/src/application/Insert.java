@@ -6,7 +6,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Program {
+public class Insert {
     public static void main(String[] args) {
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         Connection conn = null;
