@@ -1,18 +1,22 @@
 package application;
 
 import db.DB;
+import model.Department;
+import model.Seller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 public class App {
     static final String user="";
     static final String password="";
     static final String dburl="";
     public static void main(String[] args) {
+    /*
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -34,5 +38,13 @@ public class App {
             DB.closeStatement(st);
             DB.closeConnection();
         }
+        */
+
+
+        Department dep = new Department(1, "Books");
+
+        Seller seller = new Seller(2, "Jeff", "Jeff@gmail.com", new Date(), 2000.00, dep);
+
+        System.out.println(seller);
     }
 }
