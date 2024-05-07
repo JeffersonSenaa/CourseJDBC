@@ -1,44 +1,30 @@
 package application;
 
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class App {
-    static final String user="";
-    static final String password="";
-    static final String dburl="";
+    
     public static void main(String[] args) {
-    /*
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
 
-        try{
-            conn = DriverManager.getConnection(dburl, user, password);
-            st = conn.createStatement();
-            rs = st.executeQuery("SELECT * FROM department");
+        SellerDao sellerDao = DaoFactory.createSellerDao();
 
-            while(rs.next()){
-                System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-        finally{
-            DB.closeResultSet(rs);
-            DB.closeStatement(st);
-            DB.closeConnection();
-        }
-        */
-
-
-        Department dep = new Department(1, "Books");
-
-        Seller seller = new Seller(2, "Jeff", "Jeff@gmail.com", new Date(), 2000.00, dep);
-
+        System.out.println("=== Test 1: SellerDao ===");
+        Seller seller = sellerDao.findBy(3);
         System.out.println(seller);
+
+        System.out.println("\n\n=== Test 2: SellerDao: findByDepartment ===");
+        Department dep = new Department(2, null);
+        
+        List<Seller> list = sellerDao.findByDepartament(dep);
+        for (Seller obj : list) {
+            System.out.println(obj);
+        }
     }
 }
